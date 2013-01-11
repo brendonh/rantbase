@@ -5,7 +5,7 @@ Synopsis
 --------
 
 ```bash
-pip install rantbase markdown mako PyYaml 
+pip install markdown mako PyYaml git+git@github.com:brendonh/rantbase.git
 mkdir mysite
 cd mysite
 python -m rantbase init
@@ -17,4 +17,4 @@ Hello World' > docs/hello.md
 ./rant update
 ```
 
-Then point your browser at mysite/web (via some web server).
+Then point your browser at `mysite/web` (via some web server).
