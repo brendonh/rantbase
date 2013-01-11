@@ -12,7 +12,7 @@
         </a>
         <ul class="nav pull-right" style="padding-right: 50px">
           % for tag in tags:
-            <li><a href="#">#${tag}</a></li>
+            <li><a href="${config['baseUrl']}#${tag}">#${tag}</a></li>
           % endfor
         </ul>
       </div>
