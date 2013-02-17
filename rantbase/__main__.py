@@ -17,6 +17,5 @@ update.add_argument('-f', '--force', help="Update files even if they don't seem 
                     action='store_const', const=True)
 update.set_defaults(func=commands.runUpdate)
 
-
 args = parser.parse_args()
 args.func(args)

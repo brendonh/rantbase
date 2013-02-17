@@ -5,7 +5,7 @@ Synopsis
 --------
 
 ```bash
-pip install markdown mako PyYAML git+git@github.com:brendonh/rantbase.git
+pip install markdown mako PyYAML git+git://github.com/brendonh/rantbase.git
 mkdir mysite
 cd mysite
 python -m rantbase init

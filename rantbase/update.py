@@ -46,7 +46,11 @@ def update(dir, force=False):
                     continue
 
             (baseName, ext) = os.path.splitext(webPath)
-            if ext.lower() == '.md':
+            ext = ext.lower()
+            
+            if ext.endswith("~"):
+                continue
+            elif ext.lower() == '.md':
                 collection = markdowns
                 webPath = "%s.html" % baseName
             else:
@@ -81,12 +85,12 @@ def update(dir, force=False):
         for docPath, webPath in markdowns:
             print "Markdowning", docPath, "to", webPath
             
-            title = os.path.splitext(os.path.basename(docPath))[0].replace('_', ' ').title()
+            title = os.path.splitext(os.path.basename(docPath))[0].replace('-', ' ').title()
 
             markupFile = codecs.open(docPath, mode="r", encoding="utf-8")
             
             tagLine = markupFile.next().strip()
-            
+
             if tagLine.startswith('#'):
                 tags = tagRE.findall(tagLine)
                 webUrl = os.path.relpath(webPath, os.path.join(dir, 'web'))
@@ -96,7 +100,7 @@ def update(dir, force=False):
                 markupFile.seek(0)
                 tags = []
 
-            markup = markupFile.read()
+            markup = u''.join(markupFile)
 
             content = markdown.markdown(markup)
             html = template.render_unicode(
